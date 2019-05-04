@@ -14,21 +14,21 @@ public class Fork {
 		lock = new ReentrantLock();
 	}
 
-	public boolean pickup(Philospher p , State state ) throws InterruptedException
+	public boolean pickup(Philosopher p , State state ) throws InterruptedException
 	{
 		if(lock.tryLock(10, TimeUnit.SECONDS))
 		{
-			System.out.println("Philospher " + p.getId() + "picked Up Fork " + state);
+			System.out.println("Philosopher " + p.getId() + "picked Up Fork " + state);
 			return true ;
 		}
 
 		return false ;
 	}
 
-	public boolean putdown(Philospher p , State state )
+	public boolean putdown(Philosopher p , State state )
 	{
 		lock.unlock();
-		System.out.println("Philospher " +p.getId()+ "put down  Fork " + state);
+		System.out.println("Philosopher " +p.getId()+ "put down  Fork " + state);
 		return true ;
 	}
 
